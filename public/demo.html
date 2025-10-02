@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎣 Forum Pescuit - Demo Aspect</title>
+    <style>
+        /* Reset și base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1e40af;
+            color: white;
+            padding: 0;
+        }
+
+        .header-top {
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 8px 16px;
+            width: 300px;
+        }
+
+        .search-box input {
+            background: none;
+            border: none;
+            color: white;
+            outline: none;
+            width: 100%;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .login-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .login-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 24px;
+        }
+
+        .breadcrumbs-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .breadcrumbs a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: flex;
+            gap: 32px;
+        }
+
+        .forum-content {
+            flex: 1;
+        }
+
+        .welcome-section {
+            margin-bottom: 32px;
+        }
+
+        .welcome-section h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .welcome-section p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        /* Category cards */
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            background-color: #1e40af;
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .category-info h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .category-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .subcategories {
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .subcategory {
+            padding: 20px 24px;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .subcategory:hover {
+            background-color: #f9fafb;
+        }
+
+        .subcategory:last-child {
+            border-bottom: none;
+        }
+
+        .subcategory-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .subcategory-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #059669;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .subcategory-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .subcategory-details p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .subcategory-stats {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .last-post {
+            text-align: right;
+            min-width: 160px;
+        }
+
+        .last-post .time {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .last-post .user {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .last-post .topic {
+            font-size: 12px;
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .last-post .topic:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            font-weight: 600;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-content {
+            padding: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .stat-label {
+            color: #6b7280;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .online-users {
+            display: grid;
+            gap: 8px;
+        }
+
+        .online-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+
+        .user-rank {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .recent-posts {
+            display: grid;
+            gap: 16px;
+        }
+
+        .recent-post {
+            border-left: 2px solid #e5e7eb;
+            padding-left: 12px;
+        }
+
+        .recent-post h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .recent-post .meta {
+            font-size: 12px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .recent-post .category {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            margin-top: 64px;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-section p {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 24px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .main-content {
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .subcategory {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .subcategory-stats {
+                align-self: stretch;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">🎣 Forum Pescuit</div>
+            
+            <nav class="nav-menu">
+                <a href="#home">Acasă</a>
+                <a href="#recent">Postări Recente</a>
+                <a href="#members">Membri</a>
+                <a href="https://fishtrophy.ro">Fish Trophy</a>
+            </nav>
+            
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div class="search-box">
+                    <input type="text" placeholder="Caută în forum...">
+                    <span>🔍</span>
+                </div>
+                <button class="login-btn">Conectare</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-content">
+            <a href="#forum">Forum</a> › <span>Categorii</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="forum-content">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Bine ai venit pe Forum Pescuit! 🎣</h1>
+                <p>Comunitatea pescarilor din România - împărtășește experiențe, găsește sfaturi și conectează-te cu alți pasionați</p>
+            </div>
+
+            <!-- Categories -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🎣</div>
+                    <div class="category-info">
+                        <h2>Pescuit în Apă Dulce</h2>
+                        <p>Discuții despre pescuitul în râuri, lacuri și bălți din România</p>
+                    </div>
+                </div>
+                
+                <div class="subcategories">
+                    <div class="subcategory">
+                        <div class="subcategory-main">
+                            <div class="subcategory-icon">🐟</div>
+                            <div class="subcategory-details">
+                                <h3>Pescuit la Crap</h3>
+                                <p>Tehnici, momeli și echipament pentru pescuitul la crap</p>
+                            </div>
+                        </div>
+                        <div class="subcategory-stats">
+                            <div class="stat-item">
+                                <span>💬</span>
+                                <span>234</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>👥</span>
+                                <span>1,567</span>
+                            </div>
+                            <div class="last-post">
+                                <div class="time">15m</div>
+                                <div class="user">de PescarExpert</div>
+                                <a href="#" class="topic">Captură excepțională la Snagov</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-main">
+                            <div class="subcategory-icon">🐠</div>
+                            <div class="subcategory-details">
+                                <h3>Pescuit la Păstrăv</h3>
+                                <p>Locații, sezoane și tactici pentru păstrăv</p>
+                            </div>
+                        </div>
+                        <div class="subcategory-stats">
+                            <div class="stat-item">
+                                <span>💬</span>
+                                <span>89</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>👥</span>
+                                <span>445</span>
+                            </div>
+                            <div class="last-post">
+                                <div class="time">3h</div>
+                                <div class="user">de TroutMaster</div>
+                                <a href="#" class="topic">Păstrăvi frumoși pe Argeș</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🌊</div>
+                    <div class="category-info">
+                        <h2>Pescuit în Marea Neagră</h2>
+                        <p>Pescuit de la mal și din barcă pe litoralul românesc</p>
+                    </div>
+                </div>
+                
+                <div class="subcategories">
+                    <div class="subcategory">
+                        <div class="subcategory-main">
+                            <div class="subcategory-icon">🏖️</div>
+                            <div class="subcategory-details">
+                                <h3>Pescuit de la Mal</h3>
+                                <p>Surf casting și tehnici litorale</p>
+                            </div>
+                        </div>
+                        <div class="subcategory-stats">
+                            <div class="stat-item">
+                                <span>💬</span>
+                                <span>156</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>👥</span>
+                                <span>892</span>
+                            </div>
+                            <div class="last-post">
+                                <div class="time">6h</div>
+                                <div class="user">de LitoralPro</div>
+                                <a href="#" class="topic">Condiții excelente la Vama Veche</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Stats -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span>📊</span>
+                    Statistici Forum
+                </div>
+                <div class="sidebar-content">
+                    <div class="stats-grid">
+                        <div class="stat-row">
+                            <span class="stat-label">Total membri:</span>
+                            <span class="stat-value">1,247</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Total topicuri:</span>
+                            <span class="stat-value">892</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Total postări:</span>
+                            <span class="stat-value">5,643</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Utilizatori online:</span>
+                            <span class="stat-value" style="color: #059669;">4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Online Users -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span>👥</span>
+                    Utilizatori Online (4)
+                </div>
+                <div class="sidebar-content">
+                    <div class="online-users">
+                        <div class="online-user">
+                            <div class="online-dot"></div>
+                            <span>PescarExpert</span>
+                            <span class="user-rank">expert</span>
+                        </div>
+                        <div class="online-user">
+                            <div class="online-dot"></div>
+                            <span>CrapMaster</span>
+                            <span class="user-rank">maestru</span>
+                        </div>
+                        <div class="online-user">
+                            <div class="online-dot"></div>
+                            <span>DebutantFericit</span>
+                            <span class="user-rank">incepator</span>
+                        </div>
+                        <div class="online-user">
+                            <div class="online-dot"></div>
+                            <span>ModeratorForum</span>
+                            <span class="user-rank">moderator</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Posts -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span>🕒</span>
+                    Postări Recente
+                </div>
+                <div class="sidebar-content">
+                    <div class="recent-posts">
+                        <div class="recent-post">
+                            <h4>Captură excepțională de crap la Snagov</h4>
+                            <div class="meta">
+                                <span>de PescarExpert</span>
+                                <span>15m</span>
+                            </div>
+                            <div class="category">în Pescuit la Crap</div>
+                        </div>
+                        <div class="recent-post">
+                            <h4>Cele mai bune momeli pentru șalău</h4>
+                            <div class="meta">
+                                <span>de CrapMaster</span>
+                                <span>45m</span>
+                            </div>
+                            <div class="category">în Pescuit la Șalău</div>
+                        </div>
+                        <div class="recent-post">
+                            <h4>Întrebări de la un începător</h4>
+                            <div class="meta">
+                                <span>de DebutantFericit</span>
+                                <span>2h</span>
+                            </div>
+                            <div class="category">în Ghiduri Începători</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Space -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span style="font-size: 12px; color: #9ca3af;">PUBLICITATE</span>
+                </div>
+                <div class="sidebar-content">
+                    <div style="background: #f3f4f6; border: 2px dashed #d1d5db; padding: 40px; text-align: center; color: #9ca3af; border-radius: 8px;">
+                        Banner 300x250<br>
+                        Magazin Echipament Pescuit
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🎣 Forum Pescuit</h3>
+                <p>Comunitatea oficială a pescarilor români. Conectat cu Fish Trophy pentru o experiență completă.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Linkuri Utile</h3>
+                <ul>
+                    <li><a href="https://fishtrophy.ro">Fish Trophy</a></li>
+                    <li><a href="#rules">Regulament Forum</a></li>
+                    <li><a href="#help">Ajutor</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Statistici</h3>
+                <p>1,247 membri înregistrați</p>
+                <p>892 topicuri active</p>
+                <p>5,643 postări publicate</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Forum Pescuit - Parte a ecosistemului Fish Trophy</p>
+        </div>
+    </footer>
+</body>
+</html>

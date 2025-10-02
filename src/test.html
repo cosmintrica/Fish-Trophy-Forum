@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Forum Pescuit</title>
+    <style>
+        /* Test CSS simplu pentru verificare */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #1e40af;
+            color: white;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+        }
+        .category {
+            border: 1px solid #e5e7eb;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .category-header {
+            background: #059669;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+        .category-content {
+            padding: 15px;
+        }
+        .subcategory {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .subcategory:hover {
+            background-color: #f9f9f9;
+        }
+        .stats {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎣 Forum Pescuit - Test Layout</h1>
+            <p>Layout tradițional românesc pentru comunitatea pescarilor</p>
+        </div>
+        
+        <div class="category">
+            <div class="category-header">
+                🎣 Pescuit în Apă Dulce
+            </div>
+            <div class="category-content">
+                <div class="subcategory">
+                    <div>
+                        <strong>🐟 Pescuit la Crap</strong>
+                        <br>
+                        <small>Tehnici, momeli și echipament pentru pescuitul la crap</small>
+                    </div>
+                    <div class="stats">
+                        234 topicuri<br>
+                        1,567 postări
+                    </div>
+                </div>
+                
+                <div class="subcategory">
+                    <div>
+                        <strong>🐠 Pescuit la Păstrăv</strong>
+                        <br>
+                        <small>Locații, sezoane și tactici pentru păstrăv</small>
+                    </div>
+                    <div class="stats">
+                        89 topicuri<br>
+                        445 postări
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-header">
+                🌊 Pescuit în Marea Neagră
+            </div>
+            <div class="category-content">
+                <div class="subcategory">
+                    <div>
+                        <strong>🏖️ Pescuit de la Mal</strong>
+                        <br>
+                        <small>Surf casting și tehnici litorale</small>
+                    </div>
+                    <div class="stats">
+                        156 topicuri<br>
+                        892 postări
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f0f9ff; border-radius: 6px;">
+            <h3>✅ Layout funcționează!</h3>
+            <p>Dacă vezi această pagină cu styling corect, înseamnă că partea de CSS funcționează.</p>
+            <p>Următorul pas este să verificăm dacă React + TailwindCSS funcționează la <a href="http://localhost:5173">http://localhost:5173</a></p>
+        </div>
+    </div>
+</body>
+</html>
